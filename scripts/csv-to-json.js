@@ -6,10 +6,11 @@ const readdir = util.promisify(nodeFs.readdir)
 const readFile = util.promisify(nodeFs.readFile)
 const writeFile = util.promisify(nodeFs.writeFile)
 
+// The directory to read game collections and write the output json file.
 const baseResourcePath = './resources'
 
 // var csv is the CSV file with headers
-// From https://stackoverflow.com/a/27979069/6445206
+// Adapted from https://stackoverflow.com/a/27979069/6445206
 function csvJSON (csv) {
   var lines = csv.split('\n')
 
@@ -32,37 +33,67 @@ function csvJSON (csv) {
     result.push(obj)
   }
 
-  // return result; //JavaScript object
-  return JSON.stringify(result)
+  return result
 }
 
 async function getFileNames () {
   try {
-    const files = await readdir(dirPath)
-    return files
+    const files = await readdir(baseResourcePath)
+    return files.filter(file => file.includes('.csv'))
   } catch (err) {
     console.log(err)
   }
 }
 
-async function getFileData () {
+async function getFileData (fileName) {
   try {
-    const csvData = await readFile(`${baseResourcePath}/jane.csv`, 'utf8')
+    const csvData = await readFile(`${baseResourcePath}/${fileName}`, 'utf8')
+    const playerName = fileName.replace('.csv', '')
     const boardGames = csvJSON(csvData)
-    console.log(boardGames)
-    const playerData = [
-      {
-        player: 'jane',
-        games: JSON.parse(boardGames)
+    return {
+      [playerName]: {
+        games: boardGames
       }
-    ]
-    await writeFile('test.json', JSON.stringify(playerData, null, 4), 'utf8')
+    }
   } catch (err) {
     console.log(err)
   }
 }
 
-console.log(`Starting...`)
-getFileData()
+async function getAllFileData (fileNames) {
+  const fileDataPromises = fileNames.map(async fileName => {
+    const fileData = await getFileData(fileName)
+    return fileData
+  })
+  const allFileData = await Promise.all(fileDataPromises)
+  return allFileData.reduce((allData, fileData) => ({
+    ...allData,
+    ...fileData
+  }), {})
+}
+async function writeJSON (json) {
+  try {
+    await writeFile(`${baseResourcePath}/players.json`,
+      JSON.stringify(json, null, 2),
+      'utf8'
+    )
+  } catch (err) {
+    console.log(err)
+  }
+}
 
-console.log(`Done!!!!`)
+async function run () {
+  try {
+    console.log(`Starting...`)
+
+    const fileNames = await getFileNames()
+    const allData = await getAllFileData(fileNames)
+    await writeJSON(allData)
+
+    console.log(`Done!!!!`)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+run()

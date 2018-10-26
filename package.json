@@ -4,6 +4,7 @@
   "description": "Answer who's-got-which games for secret santa",
   "main": "csv-to-json.js",
   "scripts": {
+    "start": "node scripts/csv-to-json.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
