@@ -6,7 +6,9 @@ TODO
 - [x] script to convert separate csv's into a single JSON file
 - [ ] init Vue project
 - [ ] the thing
-  - include a `resources`-like folder to house the json file, no server required
+  - include a `resources`-like folder to house the json file
+  - depending on ease of set up for Vue cli, consider adding a simple server
+    that houses the static app in a `dist-`like folder
 - [ ] instructions for use
 - [ ] how is the user-friendliness for set up??
 
