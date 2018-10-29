@@ -4,7 +4,7 @@ Answer the age old question of, "who has the game I'm thinking of gifting?!"
 TODO
 - [x] init npm project
 - [x] script to convert separate csv's into a single JSON file
-- [ ] init Vue project
+- [x] init Vue project
 - [ ] the thing
   - include a `resources`-like folder to house the json file
   - depending on ease of set up for Vue cli, consider adding a simple server

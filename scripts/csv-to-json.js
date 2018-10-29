@@ -51,9 +51,8 @@ async function getFileData (fileName) {
     const playerName = fileName.replace('.csv', '')
     const boardGames = csvJSON(csvData)
     return {
-      [playerName]: {
-        games: boardGames
-      }
+      name: playerName,
+      games: boardGames
     }
   } catch (err) {
     console.log(err)
