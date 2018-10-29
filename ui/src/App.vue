@@ -1,17 +1,76 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <GameListing :players="players"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import GameListing from "./components/GameListing.vue";
+
+const testPlayers = [
+  {
+    name: "jane",
+    games: [
+      {
+        objectname: "7 Wonders",
+        own: "1"
+      },
+      {
+        objectname: "Carcassonne",
+        own: "1"
+      },
+      {
+        objectname: "Ticket to Ride: Europe",
+        own: "1"
+      }
+    ]
+  },
+  {
+    name: "jim",
+    games: [
+      {
+        objectname: "Catan",
+        own: "1"
+      },
+      {
+        objectname: "Ticket to Ride: Europe",
+        own: "1"
+      }
+    ]
+  },
+  {
+    name: "joanne",
+    games: [
+      {
+        objectname: "7 Wonders",
+        own: "1"
+      },
+      {
+        objectname: "Catan",
+        own: "1"
+      }
+    ]
+  },
+  {
+    name: "john",
+    games: [
+      {
+        objectname: "Dominion",
+        own: "1"
+      }
+    ]
+  }
+];
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    GameListing
+  },
+  data() {
+    return {
+      players: testPlayers
+    };
   }
 };
 </script>
