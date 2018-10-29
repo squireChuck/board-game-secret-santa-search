@@ -7,10 +7,12 @@ TODO
 - [x] init Vue project
 - [ ] the thing
   - include a `resources`-like folder to house the json file
-  - depending on ease of set up for Vue cli, consider adding a simple server
-    that houses the static app in a `dist-`like folder
+  - include message saying: "These people might have {{searchText}}: person1..."
+    or "Hooray, nobody has {{searchText}}"
 - [ ] instructions for use
 - [ ] how is the user-friendliness for set up??
+  - depending on ease of set up for Vue cli, consider adding a simple server
+    that houses the static app in a `dist-`like folder
 
 
 ## Instructions
@@ -20,3 +22,9 @@ TODO
 1. Run `npm start` to condense all of the player data into a single file
     (`resources/players.json`)
 1. ????
+
+
+### Refs
+- Steve Lianardo's [Santa Hat icon](http://www.iconarchive.com/show/free-christmas-flat-icons-by-stevelianardo/santa-hat-icon.html)
+  - [Iconset: Free Christmas Flat Icons (24 icons)](http://www.iconarchive.com/show/free-christmas-flat-icons-by-stevelianardo.html)
+  - License: CC Attribution 4.0
