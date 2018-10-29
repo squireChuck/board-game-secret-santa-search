@@ -65,10 +65,10 @@ async function getAllFileData (fileNames) {
     return fileData
   })
   const allFileData = await Promise.all(fileDataPromises)
-  return allFileData.reduce((allData, fileData) => ({
+  return allFileData.reduce((allData, fileData) => ([
     ...allData,
-    ...fileData
-  }), {})
+    fileData
+  ]), [])
 }
 async function writeJSON (json) {
   try {
