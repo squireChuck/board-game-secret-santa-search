@@ -51,7 +51,7 @@ async function getFileData (fileName) {
     const playerName = fileName.replace('.csv', '')
     const boardGames = csvJSON(csvData)
     return {
-      name: playerName,
+      name: `${playerName.charAt(0).toUpperCase()}${playerName.slice(1)}`,
       games: boardGames
     }
   } catch (err) {

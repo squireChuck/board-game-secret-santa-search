@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>Game listing</h1>
-    <input type="text" v-model="searchText">
+    <input
+      type="text"
+      v-model="searchText"
+      placeholder="Search for a game..."
+    >
     <div
       v-for="player in playersWithFilteredGames(players)"
       :key="player.name"

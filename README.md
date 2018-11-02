@@ -5,10 +5,12 @@ TODO
 - [x] init npm project
 - [x] script to convert separate csv's into a single JSON file
 - [x] init Vue project
-- [ ] the thing
+- [ ] filtering/searching behavior
   - include a `resources`-like folder to house the json file
   - include message saying: "These people might have {{searchText}}: person1..."
     or "Hooray, nobody has {{searchText}}"
+- [ ] styles
+  - simple CSS? Vue material?
 - [ ] instructions for use
 - [ ] how is the user-friendliness for set up??
   - depending on ease of set up for Vue cli, consider adding a simple server
