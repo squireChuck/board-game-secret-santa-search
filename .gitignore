@@ -1,4 +1,2 @@
-secretsanta.iml
-target/**
-.idea/**
-src/test/**
+node_modules/
+.vscode/
