@@ -9,7 +9,7 @@ TODO
   - include a `resources`-like folder to house the json file
 - [ ] styles/fleshing out UI features
   - simple CSS? Vue material?
-  - include message saying: "These people might have {{searchText}}: person1..."
+  - [x] include message saying: "These people might have {{searchText}}: person1..."
     or "Hooray, nobody has {{searchText}}"
 - [ ] instructions for use
 - [ ] how is the user-friendliness for set up??

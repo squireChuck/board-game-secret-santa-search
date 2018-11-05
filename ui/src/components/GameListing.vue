@@ -87,7 +87,7 @@ export default {
         .sort(orderPlayersByNameAsc);
       const numPlayers = playerNames.length - 1;
       return `This year's participants include ${playerNames
-        .slice(0, numPlayers - 1)
+        .slice(0, numPlayers)
         .join(", ")} and ${playerNames[numPlayers]}.`;
     },
     playersMatchingGameSearch() {
