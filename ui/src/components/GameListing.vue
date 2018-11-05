@@ -1,9 +1,19 @@
 <template>
-  <div>
+  <div class="container-grid">
     <header id="header-sm">
+      <img
+        :src="require('../assets/img/santa-hat-icon-32px.png')"
+        alt="Santa Hat"
+        class="logo"
+      >
       <h1>BGS3</h1>
     </header>
     <header id="header-lg">
+      <img
+        :src="require('../assets/img/santa-hat-icon-48px.png')"
+        alt="Santa Hat"
+        class="logo"
+      >
       <h1>Board Game Secret Santa Search</h1>
     </header>
     <section>
@@ -19,7 +29,7 @@
         v-model="searchText"
       >
       <div class="message-area">
-        See below for the full list!
+        See below for the full game list!
         /
         Typing...
         /
@@ -130,7 +140,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* TODO Apply css reset somewhere. */
 @media (max-width: 767px) {
   #header-sm {
     display: show;
@@ -146,20 +155,5 @@ export default {
   #header-lg {
     display: show;
   }
-}
-
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>
