@@ -17,6 +17,9 @@
       <h1>Board Game Secret Santa Search</h1>
     </header>
     <section>
+      <h2>
+        Game search
+      </h2>
       <div>
         {{ participants }}
       </div>
@@ -37,13 +40,8 @@
         /
         Hooray, looks like that'd be a new addition!
       </div>
-    </section>
-    <section>
-      <h2>
-        Game list
-      </h2>
       <div
-        v-for="player in playersWithFilteredGames(players)"
+        v-for="player in playersMatchingGameSearch"
         :key="player.name"
       >
         <h3>{{ player.name }}</h3>
@@ -67,21 +65,22 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      searchText: "",
+      searchTextIsDirty: false,
+      userIsTyping: false
+    };
+  },
   computed: {
     lowerCaseSearch() {
       return this.searchText.toLowerCase();
     },
-    playersWithGames() {
-      const players = this.players.filter(player => {
-        this.ownedGames(player.games) > 0;
-      });
-      return players;
-    },
     participants() {
-      if (this.players.length < 2) {
+      if (this.playersWithAnyGame.length < 2) {
         return "Looks like we need some recruits for Secret Santa!";
       }
-      const playerNames = this.players
+      const playerNames = this.playersWithAnyGame
         .map(player => player.name)
         .slice()
         .sort((p1, p2) => {
@@ -96,12 +95,16 @@ export default {
       return `This year's participants include ${playerNames
         .slice(0, numPlayers - 1)
         .join(", ")} and ${playerNames[numPlayers]}.`;
+    },
+    playersMatchingGameSearch() {
+      return this.playersWithFilteredGames(this.playersWithAnyGame);
+    },
+    playersWithAnyGame() {
+      const players = this.players.filter(player => {
+        return this.ownedGames(player.games).length > 0;
+      });
+      return players;
     }
-  },
-  data() {
-    return {
-      searchText: ""
-    };
   },
   methods: {
     filteredGames(games) {
