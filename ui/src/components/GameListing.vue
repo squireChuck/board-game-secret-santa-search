@@ -32,13 +32,7 @@
         v-model="searchText"
       >
       <div class="message-area">
-        See below for the full game list!
-        /
-        Typing...
-        /
-        Looks like these Jim and Jane might have something like that...
-        /
-        Hooray, looks like that'd be a new addition!
+        {{ searchStatus }}
       </div>
       <div
         v-for="player in playersMatchingGameSearch"
@@ -57,6 +51,15 @@
 </template>
 
 <script>
+const orderPlayersByNameAsc = (player1, player2) => {
+  const name1 = player1.toLowerCase();
+  const name2 = player2.toLowerCase();
+  if (name1 < name2) {
+    return -1;
+  }
+  return 1;
+};
+
 export default {
   name: "GameListing",
   props: {
@@ -67,9 +70,7 @@ export default {
   },
   data() {
     return {
-      searchText: "",
-      searchTextIsDirty: false,
-      userIsTyping: false
+      searchText: ""
     };
   },
   computed: {
@@ -83,14 +84,7 @@ export default {
       const playerNames = this.playersWithAnyGame
         .map(player => player.name)
         .slice()
-        .sort((p1, p2) => {
-          const name1 = p1.toLowerCase();
-          const name2 = p2.toLowerCase();
-          if (name1 < name2) {
-            return -1;
-          }
-          return 1;
-        });
+        .sort(orderPlayersByNameAsc);
       const numPlayers = playerNames.length - 1;
       return `This year's participants include ${playerNames
         .slice(0, numPlayers - 1)
@@ -104,6 +98,25 @@ export default {
         return this.ownedGames(player.games).length > 0;
       });
       return players;
+    },
+    searchStatus() {
+      if (this.searchText === "") {
+        return "See below for the full game list!";
+      }
+      if (this.playersMatchingGameSearch.length === 0) {
+        return "Hooray, looks like that'd be a new addition!";
+      }
+      const names = this.playersMatchingGameSearch
+        .map(player => player.name)
+        .sort(orderPlayersByNameAsc);
+      if (names.length === 1) {
+        return `Looks like this person might have something like that: ${
+          names[0]
+        }`;
+      }
+      return `Looks like these people might have something like that: ${names.join(
+        ", "
+      )}`;
     }
   },
   methods: {
