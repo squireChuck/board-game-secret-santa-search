@@ -156,7 +156,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@media (max-width: 767px) {
+@media (max-width: 576px) {
   #header-sm {
     display: show;
   }
@@ -164,7 +164,7 @@ export default {
     display: none;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 577px) {
   #header-sm {
     display: none;
   }
