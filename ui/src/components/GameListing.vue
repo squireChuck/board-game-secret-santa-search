@@ -1,5 +1,5 @@
 <template>
-  <div class="container-grid">
+  <div class="container-grid page">
     <header id="header-sm">
       <img
         :src="require('../assets/img/santa-hat-icon-32px.png')"
