@@ -5,9 +5,3 @@
   text-align: center;
   color: #2c3e50;
 }
-
-.container-grid {
-  display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-row-gap: 10px;
-}

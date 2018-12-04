@@ -23,3 +23,25 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.container-grid {
+  display: grid;
+  grid-template-rows: 2.5em 1fr;
+}
+
+/* 40em - 640px */
+@media (min-width: 40em) {
+  .container-grid {
+    display: grid;
+    grid-template-rows: 3.5em 1fr;
+  }
+}
+/* 50em - 800px */
+@media (min-width: 50em) {
+  .container-grid {
+    display: grid;
+    grid-template-rows: 4em 1fr;
+  }
+}
+</style>

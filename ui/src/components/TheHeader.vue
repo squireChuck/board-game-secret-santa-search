@@ -35,15 +35,12 @@
 }
 
 header {
-  height: 5vh;
-  padding: 0 0.75em 0 0.75em;
   border-bottom: 1px solid rgba(128, 128, 128, 0.4);
 }
 
 .logo,
 .header {
-  /* display: inline; */
-  margin: 0px 5px 0px 5px;
+  margin: 0 0.125em 0 0.125em;
 }
 
 .header-sm,
