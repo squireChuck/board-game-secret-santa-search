@@ -1,22 +1,25 @@
 <template>
-  <div id="app">
-    <GameListing :players="players"/>
+  <div id="app" class="container-grid page">
+    <TheHeader />
+    <SearchableGameList :players="players"/>
   </div>
 </template>
 
 <script>
-import GameListing from "./components/GameListing.vue";
+import SearchableGameList from "./components/SearchableGameList.vue";
+import TheHeader from "./components/TheHeader.vue";
 import players from "./resources/players.json";
 
 export default {
   name: "app",
   components: {
-    GameListing
+    SearchableGameList,
+    TheHeader
   },
-  data() {
-    return {
-      players
-    };
+  computed: {
+    players() {
+      return players;
+    }
   }
 };
 </script>

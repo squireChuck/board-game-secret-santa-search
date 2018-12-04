@@ -1,4 +1,7 @@
-# bgg-s2
+# bg-s2
+
+## Running todo's
+- Investigate `vue-mq` to expose media query breakpoints. Can this handle em's (if necessary)?
 
 ## Project setup
 ```

@@ -1,56 +1,37 @@
 <template>
-  <div class="container-grid page">
-    <header id="header-sm">
-      <img
-        :src="require('../assets/img/santa-hat-icon-32px.png')"
-        alt="Santa Hat"
-        class="logo"
-      >
-      <h1>BGS3</h1>
-    </header>
-    <header id="header-lg">
-      <img
-        :src="require('../assets/img/santa-hat-icon-48px.png')"
-        alt="Santa Hat"
-        class="logo"
-      >
-      <h1>Board Game Secret Santa Search</h1>
-    </header>
-    <section>
-      <h2>
-        Game search
-      </h2>
-      <div>
-        {{ participants }}
-      </div>
-      <label for="searchField">
-        Search for a game in the group's collection
-      </label>
-      <input
-        id="searchField"
-        type="text"
-        v-model="searchText"
-      >
-      <div class="message-area">
-        {{ searchStatus }}
-      </div>
-      <div
-        v-for="player in playersMatchingGameSearch"
+  <section>
+    <h2>
+      Game search
+    </h2>
+    <div>
+      {{ participants }}
+    </div>
+    <label for="searchField">
+      Search for a game in the group's collection
+    </label>
+    <input
+      id="searchField"
+      type="text"
+      v-model="searchText"
+    >
+    <div class="message-area">
+      {{ searchStatus }}
+    </div>
+    <template
+      v-for="player in playersMatchingGameSearch"
+    >
+      <GameListItem
+        :games="sortedGames(filteredGames(ownedGames(player.games)))"
+        :player-name="player.name"
         :key="player.name"
-      >
-        <h3>{{ player.name }}</h3>
-        <ul
-          v-for="game in sortedGames(filteredGames(ownedGames(player.games)))"
-          :key="game.objectname"
-        >
-          <li>{{ game.objectname }}</li>
-        </ul>
-      </div>
-    </section>
-  </div>
+      />
+    </template>
+  </section>
 </template>
 
 <script>
+import GameListItem from "./GameListItem.vue";
+
 const orderPlayersByNameAsc = (player1, player2) => {
   const name1 = player1.toLowerCase();
   const name2 = player2.toLowerCase();
@@ -61,7 +42,10 @@ const orderPlayersByNameAsc = (player1, player2) => {
 };
 
 export default {
-  name: "GameListing",
+  name: "SearchableGameList",
+  components: {
+    GameListItem
+  },
   props: {
     players: {
       type: Array,
@@ -153,23 +137,3 @@ export default {
   }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-@media (max-width: 576px) {
-  #header-sm {
-    display: show;
-  }
-  #header-lg {
-    display: none;
-  }
-}
-@media (min-width: 577px) {
-  #header-sm {
-    display: none;
-  }
-  #header-lg {
-    display: show;
-  }
-}
-</style>
