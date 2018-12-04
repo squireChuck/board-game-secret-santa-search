@@ -5,7 +5,9 @@
       v-for="game in games"
       :key="game.objectname"
     >
-      <li>{{ game.objectname }}</li>
+      <li class="game-name">
+        {{ game.objectname }}
+      </li>
     </ul>
   </div>
 </template>
@@ -25,3 +27,15 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.game-name {
+  max-width: 15em;
+}
+
+@media (min-width: 44em) {
+  .game-name {
+    max-width: 40em;
+  }
+}
+</style>
