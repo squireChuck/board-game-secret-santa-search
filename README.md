@@ -16,6 +16,11 @@ TODO
   - depending on ease of set up for Vue cli, consider adding a simple server
     that houses the static app in a `dist-`like folder
 
+Need to support:
+-  Mobile size max-width: < 43.75em - < 700px
+-  @media (min-width: 43.75em) - 700px
+-  @media (min-width: 56.25em) - 900px
+
 
 ## Instructions
 1. Install Node.js
