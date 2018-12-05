@@ -2,9 +2,12 @@
 
 ## Running todo's
 - [x] Fixed header
-- Simplify header (see GH, GMail as examples) - make the title less jumpy/prominent
-- Spruce up the body - Grid/flexbox the GameListItem's
-- Investigate `vue-mq` to expose media query breakpoints. Can this handle em's (if necessary)?
+- [x] Simplify header (see GH, GMail as examples) - make the title less jumpy/prominent
+- [ ] Spruce up the body - Grid/flexbox the GameListItem's
+- [ ] Test on desktop, mobile
+- [ ] Replace "Avenir" with Roboto/other sans-serif typeface with progressive enhancement if
+  typeface unavailable.
+- [ ] Investigate `vue-mq` to expose media query breakpoints. Can this handle em's (if necessary)?
 
 ## Project setup
 ```

@@ -1,29 +1,11 @@
 <template>
   <header class="container-flex">
-    <template>
-      <img
-        :src="require('../assets/img/santa-hat-icon-32px.png')"
-        alt="Santa Hat"
-        class="logo logo-sm"
-      >
-      <h1 class="header header-sm">BGS2</h1>
-    </template>
-    <template>
       <img
         :src="require('../assets/img/santa-hat-icon-48px.png')"
         alt="Santa Hat"
-        class="logo logo-md"
+        class="logo"
       >
-      <h1 class="header header-md">BG Secret Santa</h1>
-    </template>
-    <template>
-      <img
-        :src="require('../assets/img/santa-hat-icon-48px.png')"
-        alt="Santa Hat"
-        class="logo logo-lg"
-      >
-      <h1 class="header header-lg">Board Game Secret Santa</h1>
-    </template>
+      <h1 class="header">BGS2</h1>
   </header>
 </template>
 
@@ -39,51 +21,19 @@
   margin: 0 0.125em 0 0.125em;
 }
 
-.header-sm,
-.logo-sm {
-  display: inline-block;
-}
-.header-md,
-.header-lg,
-.logo-md,
-.logo-lg {
+.header {
   display: none;
 }
-
-.logo-sm {
+.logo {
+  display: inline-block;
   height: 32px;
   width: 32px;
 }
-@media (min-width: 40em) {
-  .header-sm,
-  .header-lg,
-  .logo-sm,
-  .logo-lg {
-    display: none;
-  }
-  .header-md,
-  .logo-md {
+
+@media (min-width: 43.75em) {
+  .header {
     display: inline-block;
-  }
-  .logo-md {
-    height: 48px;
-    width: 48px;
-  }
-}
-@media (min-width: 50em) {
-  .header-sm,
-  .header-md,
-  .logo-sm,
-  .logo-md {
-    display: none;
-  }
-  .header-lg,
-  .logo-lg {
-    display: inline-block;
-  }
-  .logo-lg {
-    height: 48px;
-    width: 48px;
+    font-size: 2em;
   }
 }
 </style>
