@@ -1,6 +1,9 @@
-# bg-s2
+# bgs2
 
 ## Running todo's
+- [x] Fixed header
+- Simplify header (see GH, GMail as examples) - make the title less jumpy/prominent
+- Spruce up the body - Grid/flexbox the GameListItem's
 - Investigate `vue-mq` to expose media query breakpoints. Can this handle em's (if necessary)?
 
 ## Project setup

@@ -6,7 +6,7 @@
         alt="Santa Hat"
         class="logo logo-sm"
       >
-      <h1 class="header header-sm">BGS3</h1>
+      <h1 class="header header-sm">BGS2</h1>
     </template>
     <template>
       <img
@@ -14,7 +14,7 @@
         alt="Santa Hat"
         class="logo logo-md"
       >
-      <h1 class="header header-md">BG Secret Santa Search</h1>
+      <h1 class="header header-md">BG Secret Santa</h1>
     </template>
     <template>
       <img
@@ -22,7 +22,7 @@
         alt="Santa Hat"
         class="logo logo-lg"
       >
-      <h1 class="header header-lg">Board Game Secret Santa Search</h1>
+      <h1 class="header header-lg">Board Game Secret Santa</h1>
     </template>
   </header>
 </template>
@@ -32,10 +32,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-header {
-  border-bottom: 1px solid rgba(128, 128, 128, 0.4);
 }
 
 .logo,
