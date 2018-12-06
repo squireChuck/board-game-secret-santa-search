@@ -24,9 +24,7 @@
         class="message-area"
         v-if="hasPlayersMatchingSearch"
       >
-        <span class="matching-players">
-          {{ stringOfPlayerNames(playersNamesMatchingGameSearch) }}
-        </span>
+        <span class="matching-players">{{ stringOfPlayerNames(playersNamesMatchingGameSearch) }}</span>
         might have that.
       </p>
       <p
@@ -36,9 +34,7 @@
         <span
           class="no-matching-players"
           v-if="hasSearchText && !hasPlayersMatchingSearch"
-        >
-          Horray!
-        </span>
+        >Horray!</span>
         {{ searchStatus }}
       </p>
       <template
