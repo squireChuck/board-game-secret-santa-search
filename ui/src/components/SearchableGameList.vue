@@ -1,11 +1,14 @@
 <template>
   <section>
     <h2>
-      Game search
+      Who's in it
     </h2>
-    <div>
+    <p>
       {{ participants }}
-    </div>
+    </p>
+    <h2>
+      Who's got it
+    </h2>
     <label for="searchField">
       Search for a game in the group's collection
     </label>
@@ -14,9 +17,9 @@
       type="text"
       v-model="searchText"
     >
-    <div class="message-area">
+    <p class="message-area">
       {{ searchStatus }}
-    </div>
+    </p>
     <template
       v-for="player in playersMatchingGameSearch"
     >
@@ -72,7 +75,7 @@ export default {
       const numPlayers = playerNames.length - 1;
       return `This year's participants include ${playerNames
         .slice(0, numPlayers)
-        .join(", ")} and ${playerNames[numPlayers]}.`;
+        .join(", ")}, and ${playerNames[numPlayers]}.`;
     },
     playersMatchingGameSearch() {
       return this.playersWithFilteredGames(this.playersWithAnyGame);

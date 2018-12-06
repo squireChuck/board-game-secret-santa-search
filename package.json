@@ -1,5 +1,5 @@
 {
-  "name": "board-game-secret-santa",
+  "name": "board-game-secret-santa-search",
   "version": "1.0.0",
   "description": "Answer who's-got-which games for secret santa",
   "main": "csv-to-json.js",

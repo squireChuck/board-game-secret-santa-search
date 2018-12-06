@@ -5,7 +5,7 @@
         alt="Santa Hat"
         class="logo"
       >
-      <h1 class="header">BGS2</h1>
+      <h1 class="header">BGS3</h1>
   </header>
 </template>
 
