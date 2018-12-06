@@ -1,39 +1,55 @@
 <template>
-  <section>
-    <h2>
-      Who's in it
-    </h2>
-    <p>
-      {{ participants }}
-    </p>
-    <h2>
-      Who's got it
-    </h2>
-    <label for="searchField">
-      Search for a game in the group's collection
-    </label>
-    <input
-      id="searchField"
-      type="text"
-      v-model="searchText"
-    >
-    <p class="message-area">
-      {{ searchStatus }}
-    </p>
-    <template
-      v-for="player in playersMatchingGameSearch"
-    >
-      <GameListItem
-        :games="sortedGames(filteredGames(ownedGames(player.games)))"
-        :player-name="player.name"
-        :key="player.name"
-      />
-    </template>
-  </section>
+  <div>
+    <section>
+      <h2>
+        Who's in it
+      </h2>
+      <p>
+        {{ participants }}
+      </p>
+    </section>
+    <section v-if="hasEnoughPlayersWithGames">
+      <h2>
+        Who's got it
+      </h2>
+      <label for="searchField">
+        Search for a game in the group's collection
+      </label>
+      <input
+        id="searchField"
+        type="text"
+        v-model="searchText"
+      >
+      <p class="message-area">
+        {{ searchStatus }}
+      </p>
+      <template
+        v-for="player in playersMatchingGameSearch"
+      >
+        <GameListItem
+          :games="sortedGames(filteredGames(ownedGames(player.games)))"
+          :player-name="player.name"
+          :key="player.name"
+        />
+      </template>
+    </section>
+  </div>
 </template>
 
 <script>
 import GameListItem from "./GameListItem.vue";
+
+const stringOfPlayerNames = (listOfNames) => {
+  const numPlayers = listOfNames.length;
+  if (numPlayers === 0) {
+    return ''
+  } else if (numPlayers === 1) {
+    return listOfNames[0]
+  }
+  return `${listOfNames
+    .slice(0, numPlayers - 1)
+    .join(", ")} and ${listOfNames[numPlayers - 1]}`
+}
 
 const orderPlayersByNameAsc = (player1, player2) => {
   const name1 = player1.toLowerCase();
@@ -61,21 +77,21 @@ export default {
     };
   },
   computed: {
+    hasEnoughPlayersWithGames() {
+      return this.playersWithAnyGame.length >= 2;
+    },
     lowerCaseSearch() {
       return this.searchText.toLowerCase();
     },
     participants() {
-      if (this.playersWithAnyGame.length < 2) {
+      if (!this.hasEnoughPlayersWithGames) {
         return "Looks like we need some recruits for Secret Santa!";
       }
       const playerNames = this.playersWithAnyGame
         .map(player => player.name)
         .slice()
         .sort(orderPlayersByNameAsc);
-      const numPlayers = playerNames.length - 1;
-      return `This year's participants include ${playerNames
-        .slice(0, numPlayers)
-        .join(", ")}, and ${playerNames[numPlayers]}.`;
+      return `This year's participants are ${stringOfPlayerNames(playerNames)}.`;
     },
     playersMatchingGameSearch() {
       return this.playersWithFilteredGames(this.playersWithAnyGame);
@@ -96,14 +112,8 @@ export default {
       const names = this.playersMatchingGameSearch
         .map(player => player.name)
         .sort(orderPlayersByNameAsc);
-      if (names.length === 1) {
-        return `Looks like this person might have something like that: ${
-          names[0]
-        }`;
-      }
-      return `Looks like these people might have something like that: ${names.join(
-        ", "
-      )}`;
+
+      return `${stringOfPlayerNames(names)} might have that.`;
     }
   },
   methods: {
