@@ -8,7 +8,7 @@
         {{ participants }}
       </p>
     </section>
-    <section v-if="hasEnoughPlayersWithGames">
+    <section v-if="hasEnoughParticipants">
       <h2>
         Who's got it
       </h2>
@@ -20,7 +20,20 @@
         type="text"
         v-model="searchText"
       >
-      <p class="message-area">
+      <p
+        class="message-area"
+        v-if="hasPlayersMatchingSearch"
+      >
+        <!-- TODO underline/border/something to make the names stand out -->
+        <span class="matching-players">
+          {{ stringOfPlayerNames(playersNamesMatchingGameSearch) }}
+        </span>
+        might have that.
+      </p>
+      <p
+        class="message-area"
+        v-else
+      >
         {{ searchStatus }}
       </p>
       <template
@@ -38,18 +51,6 @@
 
 <script>
 import GameListItem from "./GameListItem.vue";
-
-const stringOfPlayerNames = (listOfNames) => {
-  const numPlayers = listOfNames.length;
-  if (numPlayers === 0) {
-    return ''
-  } else if (numPlayers === 1) {
-    return listOfNames[0]
-  }
-  return `${listOfNames
-    .slice(0, numPlayers - 1)
-    .join(", ")} and ${listOfNames[numPlayers - 1]}`
-}
 
 const orderPlayersByNameAsc = (player1, player2) => {
   const name1 = player1.toLowerCase();
@@ -77,24 +78,35 @@ export default {
     };
   },
   computed: {
-    hasEnoughPlayersWithGames() {
+    hasEnoughParticipants() {
       return this.playersWithAnyGame.length >= 2;
+    },
+    hasPlayersMatchingSearch(){
+      return this.hasSearchText && this.playersMatchingGameSearch.length > 0;
+    },
+    hasSearchText() {
+      return this.searchText !== ""
     },
     lowerCaseSearch() {
       return this.searchText.toLowerCase();
     },
     participants() {
-      if (!this.hasEnoughPlayersWithGames) {
+      if (!this.hasEnoughParticipants) {
         return "Looks like we need some recruits for Secret Santa!";
       }
       const playerNames = this.playersWithAnyGame
         .map(player => player.name)
         .slice()
         .sort(orderPlayersByNameAsc);
-      return `This year's participants are ${stringOfPlayerNames(playerNames)}.`;
+      return `This year's participants are ${this.stringOfPlayerNames(playerNames)}.`;
     },
     playersMatchingGameSearch() {
-      return this.playersWithFilteredGames(this.playersWithAnyGame);
+      const hasFilteredGames = player =>
+        this.filteredGames(player.games).length > 0;
+      return this.playersWithAnyGame.filter(hasFilteredGames);
+    },
+    playersNamesMatchingGameSearch() {
+      return this.playersMatchingGameSearch.map(player => player.name);
     },
     playersWithAnyGame() {
       const players = this.players.filter(player => {
@@ -103,17 +115,13 @@ export default {
       return players;
     },
     searchStatus() {
-      if (this.searchText === "") {
+      if (!this.hasSearchText) {
         return "See below for the full game list!";
       }
-      if (this.playersMatchingGameSearch.length === 0) {
+      if (!this.hasPlayersMatchingSearch) {
         return "Hooray, looks like that'd be a new addition!";
       }
-      const names = this.playersMatchingGameSearch
-        .map(player => player.name)
-        .sort(orderPlayersByNameAsc);
-
-      return `${stringOfPlayerNames(names)} might have that.`;
+      return '';
     }
   },
   methods: {
@@ -121,11 +129,6 @@ export default {
       return games.filter(game =>
         game.objectname.toLowerCase().includes(this.lowerCaseSearch)
       );
-    },
-    playersWithFilteredGames(players) {
-      const hasFilteredGames = player =>
-        this.filteredGames(player.games).length > 0;
-      return players.filter(hasFilteredGames);
     },
     ownedGames(games) {
       const isNumeric = str => !isNaN(str);
@@ -146,6 +149,17 @@ export default {
         return 1;
       };
       return games.slice().sort(orderAlphaAsc);
+    },
+    stringOfPlayerNames(listOfNames) {
+      const numPlayers = listOfNames.length;
+      if (numPlayers === 0) {
+        return ''
+      } else if (numPlayers === 1) {
+        return listOfNames[0]
+      }
+      return `${listOfNames
+        .slice(0, numPlayers - 1)
+        .join(", ")} and ${listOfNames[numPlayers - 1]}`
     }
   }
 };
