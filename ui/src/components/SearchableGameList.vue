@@ -37,21 +37,27 @@
         >Horray!</span>
         {{ searchStatus }}
       </p>
-      <template
-        v-for="player in playersMatchingGameSearch"
-      >
-        <GameListItem
-          :games="sortedGames(filteredGames(ownedGames(player.games)))"
-          :player-name="player.name"
-          :key="player.name"
-        />
-      </template>
+      <GameList :players="playersMatchingGameSearch" />
     </section>
   </div>
 </template>
 
 <script>
-import GameListItem from "./GameListItem.vue";
+import GameList from "./GameList.vue";
+
+/* Helper functions. */
+const gameIsOwned = game => {
+  const isNumeric = str => !isNaN(str);
+  const toNumber = str => +str;
+  return isNumeric(game.own) && toNumber(game.own) > 0;
+}
+
+const filterOwnedGames = (text, games) => {
+  return games.filter(game =>
+    game.objectname.toLowerCase().includes(text)
+    && gameIsOwned(game)
+  );
+}
 
 const orderPlayersByNameAsc = (player1, player2) => {
   const name1 = player1.toLowerCase();
@@ -62,10 +68,24 @@ const orderPlayersByNameAsc = (player1, player2) => {
   return 1;
 };
 
+const sortGames = games => {
+  const orderAlphaAsc = (game1, game2) => {
+    const name1 = game1.objectname.toLowerCase();
+    const name2 = game2.objectname.toLowerCase();
+    if (name1 < name2) {
+      return -1;
+    } else if (name1 === name2) {
+      return 0;
+    }
+    return 1;
+  };
+  return games.slice().sort(orderAlphaAsc);
+}
+
 export default {
   name: "SearchableGameList",
   components: {
-    GameListItem
+    GameList
   },
   props: {
     players: {
@@ -103,15 +123,20 @@ export default {
     },
     playersMatchingGameSearch() {
       const hasFilteredGames = player =>
-        this.filteredGames(player.games).length > 0;
-      return this.playersWithAnyGame.filter(hasFilteredGames);
+        filterOwnedGames(this.lowerCaseSearch, player.games).length > 0;
+      return this.playersWithAnyGame
+        .filter(hasFilteredGames)
+        .map(player => ({
+          name: player.name,
+          games: sortGames(filterOwnedGames(this.lowerCaseSearch, player.games))
+        }))
     },
     playersNamesMatchingGameSearch() {
       return this.playersMatchingGameSearch.map(player => player.name);
     },
     playersWithAnyGame() {
       const players = this.players.filter(player => {
-        return this.ownedGames(player.games).length > 0;
+        return player.games.filter(gameIsOwned).length > 0;
       });
       return players;
     },
@@ -123,34 +148,9 @@ export default {
         return "Looks like that'd be a new addition";
       }
       return '';
-    }
+    },
   },
   methods: {
-    filteredGames(games) {
-      return games.filter(game =>
-        game.objectname.toLowerCase().includes(this.lowerCaseSearch)
-      );
-    },
-    ownedGames(games) {
-      const isNumeric = str => !isNaN(str);
-      const toNumber = str => +str;
-      return games.filter(
-        game => isNumeric(game.own) && toNumber(game.own) > 0
-      );
-    },
-    sortedGames(games) {
-      const orderAlphaAsc = (game1, game2) => {
-        const name1 = game1.objectname.toLowerCase();
-        const name2 = game2.objectname.toLowerCase();
-        if (name1 < name2) {
-          return -1;
-        } else if (name1 === name2) {
-          return 0;
-        }
-        return 1;
-      };
-      return games.slice().sort(orderAlphaAsc);
-    },
     stringOfPlayerNames(listOfNames) {
       const numPlayers = listOfNames.length;
       if (numPlayers === 0) {
