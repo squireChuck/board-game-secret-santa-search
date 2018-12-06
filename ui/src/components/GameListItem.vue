@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="game-list-item">
     <h3>{{ playerName }}</h3>
     <ul
       v-for="game in games"
@@ -29,17 +29,19 @@ export default {
 </script>
 
 <style scoped>
+.game-list-item {
+  text-align: left;
+  border-right: 1px solid rgba(0,0,0, 0.25);
+  padding: 0 20px;
+  max-width: 20em;
+}
 /* Common across viewport sizes */
 h3 {
-  margin: 30px 0 0;
+  margin: 0;
 }
 ul {
   list-style-type: none;
   padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
 }
 
 .game-name {

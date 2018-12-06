@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <template
-        v-for="(player, idx) in players"
-    >
+  <div class="container-flex">
+    <template v-for="(player, idx) in players">
       <GameListItem
         :games="player.games"
         :player-name="player.name"
@@ -27,3 +25,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* decent change that some of these flex settings should change
+   based on viewport size. */
+.container-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+</style>

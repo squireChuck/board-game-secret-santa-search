@@ -37,7 +37,10 @@
         >Horray!</span>
         {{ searchStatus }}
       </p>
-      <GameList :players="playersMatchingGameSearch" />
+      <GameList
+        class="game-list"
+        :players="playersMatchingGameSearch"
+      />
     </section>
   </div>
 </template>
@@ -167,6 +170,10 @@ export default {
 </script>
 
 <style scoped>
+.game-list {
+  margin: 20px 0;
+}
+
 .matching-players {
   text-decoration: underline;
   text-decoration-color: red;
@@ -175,5 +182,4 @@ export default {
   text-decoration: underline;
   text-decoration-color: green;
 }
-
 </style>
