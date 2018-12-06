@@ -1,4 +1,4 @@
-# board-game-secret-santa
+# board-game-secret-santa-search
 Answer the age old question of, "who has the game I'm thinking of gifting?!"
 
 TODO
@@ -31,7 +31,11 @@ Need to support:
 1. ????
 
 
-### Refs
+## Future features
+- Link board game names with Board Game Geek entries
+- Stats based on a player's games, e.g. favorite genre/mechanic/etc.
+
+## Refs
 - Steve Lianardo's [Santa Hat icon](http://www.iconarchive.com/show/free-christmas-flat-icons-by-stevelianardo/santa-hat-icon.html)
   - [Iconset: Free Christmas Flat Icons (24 icons)](http://www.iconarchive.com/show/free-christmas-flat-icons-by-stevelianardo.html)
   - License: CC Attribution 4.0

@@ -24,7 +24,6 @@
         class="message-area"
         v-if="hasPlayersMatchingSearch"
       >
-        <!-- TODO underline/border/something to make the names stand out -->
         <span class="matching-players">
           {{ stringOfPlayerNames(playersNamesMatchingGameSearch) }}
         </span>
@@ -34,6 +33,12 @@
         class="message-area"
         v-else
       >
+        <span
+          class="no-matching-players"
+          v-if="hasSearchText && !hasPlayersMatchingSearch"
+        >
+          Horray!
+        </span>
         {{ searchStatus }}
       </p>
       <template
@@ -119,7 +124,7 @@ export default {
         return "See below for the full game list!";
       }
       if (!this.hasPlayersMatchingSearch) {
-        return "Hooray, looks like that'd be a new addition!";
+        return "Looks like that'd be a new addition";
       }
       return '';
     }
@@ -164,3 +169,15 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.matching-players {
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+.no-matching-players {
+  text-decoration: underline;
+  text-decoration-color: green;
+}
+
+</style>

@@ -3,7 +3,14 @@
 ## Running todo's
 - [x] Fixed header
 - [x] Simplify header (see GH, GMail as examples) - make the title less jumpy/prominent
-- [ ] Spruce up the body - Grid/flexbox the GameListItem's
+- [ ] Spruce up the body
+  - [x] verbiage
+  - [x] make verbiage stand out for players matching search
+  - [ ] Grid/flexbox the GameListItem's
+    - show first 5 - 10 games in each GameListItem
+    - min/max-width, -height  on each GameListItem
+    - make expandable
+  - [ ] margins for some whitespace on small viewports
 - [ ] Test on desktop, mobile
 - [ ] Replace "Avenir" with Roboto/other sans-serif typeface with progressive enhancement if
   typeface unavailable.
