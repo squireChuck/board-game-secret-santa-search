@@ -11,7 +11,8 @@
     - min/max-width, -height  on each GameListItem
     - make expandable
   - [ ] margins for some whitespace on small viewports
-- [ ] Test on desktop, mobile
+  - [ ] adjust alignment/order of search box/label for small viewports.
+- [ ] Test on desktop, mobile; fix any weirdness.
 - [ ] Replace "Avenir" with Roboto/other sans-serif typeface with progressive enhancement if
   typeface unavailable.
 - [ ] Investigate `vue-mq` to expose media query breakpoints. Can this handle em's (if necessary)?

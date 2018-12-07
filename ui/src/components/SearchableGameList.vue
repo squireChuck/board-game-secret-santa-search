@@ -4,7 +4,7 @@
       <h2>
         Who's in it
       </h2>
-      <p>
+      <p class="message-area">
         {{ participants }}
       </p>
     </section>
@@ -12,12 +12,16 @@
       <h2>
         Who's got it
       </h2>
-      <label for="searchField">
-        Search for a game in the group's collection
+      <label
+        for="search-field"
+        class="search-label"
+      >
+        Search the group's game collection
       </label>
       <input
-        id="searchField"
+        id="search-field"
         type="text"
+        placeholder=""
         v-model="searchText"
       >
       <p
@@ -171,15 +175,40 @@ export default {
 
 <style scoped>
 .game-list {
-  margin: 20px 0;
+  margin: 1.25em 0 0 0;
 }
+
+/* TBD whether this margin should be on the section or the
+      game items themselves. */
+/* @media (min-width: 43.75em) {
+  .game-list {
+    margin: 1.25em 0 0 0;
+  }
+} */
 
 .matching-players {
   text-decoration: underline;
   text-decoration-color: red;
 }
+
+.message-area {
+  margin: 1.25em;
+}
+
 .no-matching-players {
   text-decoration: underline;
   text-decoration-color: green;
+}
+
+.search-label, #search-field {
+  display: block;
+  margin: 1.25em auto;
+}
+
+@media (min-width: 43.75em) {
+  .search-label, #search-field {
+    display: inline;
+    margin: 0 auto;
+  }
 }
 </style>
