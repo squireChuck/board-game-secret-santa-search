@@ -17,11 +17,6 @@
       - make expandable
   - [x] margins for some whitespace on small viewports
   - [x] adjust alignment/order of search box/label for small viewports.
-- [ ] ~~Allow user to enter person's name in the box.~~ => would require
-  complicating the search status, e.g. entering "Jim" and seeing "Jim might
-  have that game". Not worth it considering there are better ways to filter
-  based on participants (multi-select, expand/contract each player's entire
-  list).
 - [ ] Test on desktop, mobile; fix any weirdness.
 - [ ] Replace "Avenir" with Roboto/other sans-serif typeface with progressive enhancement if
   typeface unavailable.
@@ -30,6 +25,11 @@
 - [ ] Multi-select filter based on the participants.
   - e.g. `I want to see games owned by: <badges/list of selected people>`,
     including a mechanism option to add/remove people.
+- [ ] ~~Allow user to enter person's name in the box.~~ => would require
+  complicating the search status, e.g. entering "Jim" and seeing "Jim might
+  have that game". Not worth it considering there are better ways to filter
+  based on participants (multi-select, expand/contract each player's entire
+  list).
 
 ## Project setup
 ```
