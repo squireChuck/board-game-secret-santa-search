@@ -5,7 +5,7 @@
       v-for="game in games"
       :key="game.objectname"
     >
-      <li class="game-name">
+      <li>
         {{ game.objectname }}
       </li>
     </ul>
@@ -30,10 +30,12 @@ export default {
 
 <style scoped>
 .game-list-item {
+  border: 1px solid rgba(0,0,0, 0.25);
+  border-radius: 10px;
   text-align: left;
-  border-right: 1px solid rgba(0,0,0, 0.25);
-  padding: 0 20px;
-  max-width: 20em;
+  width: 15em;
+  padding: 0.5em 1.5em;
+  margin: 1em;
 }
 /* Common across viewport sizes */
 h3 {
@@ -42,15 +44,5 @@ h3 {
 ul {
   list-style-type: none;
   padding: 0;
-}
-
-.game-name {
-  max-width: 15em;
-}
-
-@media (min-width: 44em) {
-  .game-name {
-    max-width: 40em;
-  }
 }
 </style>
