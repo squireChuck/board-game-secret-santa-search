@@ -32,15 +32,16 @@ export default {
 .game-list-item {
   border: 1px solid rgba(0,0,0, 0.25);
   border-radius: 10px;
+  margin: 1em;
+  padding: 0.5em 1.5em;
   text-align: left;
   width: 15em;
-  padding: 0.5em 1.5em;
-  margin: 1em;
 }
-/* Common across viewport sizes */
+
 h3 {
   margin: 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;

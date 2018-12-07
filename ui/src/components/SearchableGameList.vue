@@ -41,10 +41,7 @@
         >Horray!</span>
         {{ searchStatus }}
       </p>
-      <GameList
-        class="game-list"
-        :players="playersMatchingGameSearch"
-      />
+      <GameList :players="playersMatchingGameSearch" />
     </section>
   </div>
 </template>
@@ -174,18 +171,6 @@ export default {
 </script>
 
 <style scoped>
-.game-list {
-  margin: 1.25em 0 0 0;
-}
-
-/* TBD whether this margin should be on the section or the
-      game items themselves. */
-/* @media (min-width: 43.75em) {
-  .game-list {
-    margin: 1.25em 0 0 0;
-  }
-} */
-
 .matching-players {
   text-decoration: underline;
   text-decoration-color: red;

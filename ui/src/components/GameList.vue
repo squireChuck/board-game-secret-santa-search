@@ -1,5 +1,5 @@
 <template>
-  <div class="container-flex">
+  <div class="container-flex game-list">
     <template v-for="(player, idx) in players">
       <GameListItem
         :games="player.games"
@@ -27,11 +27,13 @@ export default {
 </script>
 
 <style scoped>
-/* decent change that some of these flex settings should change
-   based on viewport size. */
 .container-flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.game-list {
+  margin: 1.25em 0 0 0;
 }
 </style>
