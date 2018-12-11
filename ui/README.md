@@ -1,4 +1,4 @@
-# bgs3 ui
+# bgs3-ui
 
 ## UI future features
 - [ ] Selectable participant filter.
