@@ -1,0 +1,36 @@
+/*
+  Important breakpoints
+    - Mobile first styles
+    - 43.75em (700px) styles
+    - 56.25em (900px) styles
+*/
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* General page structure - fixed header followed by main content. */
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+  height: 2.5em;
+}
+
+#main {
+  padding-top: 2.5em;
+}
+
+@media (min-width: 43.75em) {
+  #header {
+    height: 3em;
+  }
+  #main {
+    padding-top: 3em;
+  }
+}
