@@ -1,20 +1,8 @@
 # board-game-secret-santa-search
 Answer the age old question of, "who has the game I'm thinking of gifting?!"
-
-TODO
-- [x] init npm project
-- [x] script to convert separate csv's into a single JSON file
-- [x] init Vue project
-- [x] filtering/searching behavior
-  - include a `resources`-like folder to house the json file
-- [x] styles/fleshing out UI features
-  - simple CSS? Vue material?
-  - [x] include message saying: "These people might have {{searchText}}: person1..."
-    or "Hooray, nobody has {{searchText}}"
-- [ ] instructions for use
-- [ ] how is the user-friendliness for set up??
-  - depending on ease of set up for Vue cli, consider adding a simple server
-    that houses the static app in a `dist-`like folder
+More specifically, easily search through people's exported
+[Board Game Geek](https://boardgamegeek.com) collections to see if anyone
+has a specific game.
 
 Important viewport breakpoints:
 -  Mobile size max-width: < 43.75em - < 700px
@@ -23,15 +11,21 @@ Important viewport breakpoints:
 
 
 ## Instructions
-1. Install Node.js
-1. Export the BGG game collections as csv's, save them in the `resources`
-    folder.
-1. Run `npm start` to condense all of the player data into a single file
-    (`resources/players.json`)
-1. ????
+1. Install [Node.js](https://nodejs.org/en/download/)
+1. Download and extract this repo.
+1. Export each person's Board Game Geek game collections as csv files, saving
+  them in the `resources` folder as `playerName.csv`, e.g. `john.csv`.
+1. In this folder, run `npm start` to condense all of the player data into a
+  single file (`resources/players.json`).
+1. Copy the `players.json` file into `ui/src/resources`.
+1. In the `ui` folder, run `npm run serve`.
 
 
-## Future features
+## Project future features
+- Simple server for compiled assets, quick and easy setup.
+  - depending on ease of set up for Vue cli, consider adding a simple server
+    that houses the static app in a `dist-`like folder
+  - npm script to copy `players.json` into the ui and server folders.
 - Link board game names with Board Game Geek entries
 - Stats based on a player's games, e.g. favorite genre/mechanic/etc.
 
