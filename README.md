@@ -7,7 +7,7 @@ TODO
 - [x] init Vue project
 - [x] filtering/searching behavior
   - include a `resources`-like folder to house the json file
-- [ ] styles/fleshing out UI features
+- [x] styles/fleshing out UI features
   - simple CSS? Vue material?
   - [x] include message saying: "These people might have {{searchText}}: person1..."
     or "Hooray, nobody has {{searchText}}"
@@ -16,7 +16,7 @@ TODO
   - depending on ease of set up for Vue cli, consider adding a simple server
     that houses the static app in a `dist-`like folder
 
-Need to support:
+Important viewport breakpoints:
 -  Mobile size max-width: < 43.75em - < 700px
 -  @media (min-width: 43.75em) - 700px
 -  @media (min-width: 56.25em) - 900px

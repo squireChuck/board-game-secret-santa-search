@@ -54,14 +54,13 @@ const gameIsOwned = game => {
   const isNumeric = str => !isNaN(str);
   const toNumber = str => +str;
   return isNumeric(game.own) && toNumber(game.own) > 0;
-}
+};
 
 const filterOwnedGames = (text, games) => {
-  return games.filter(game =>
-    game.objectname.toLowerCase().includes(text)
-    && gameIsOwned(game)
+  return games.filter(
+    game => game.objectname.toLowerCase().includes(text) && gameIsOwned(game)
   );
-}
+};
 
 const orderPlayersByNameAsc = (player1, player2) => {
   const name1 = player1.toLowerCase();
@@ -84,7 +83,7 @@ const sortGames = games => {
     return 1;
   };
   return games.slice().sort(orderAlphaAsc);
-}
+};
 
 export default {
   name: "SearchableGameList",
@@ -106,11 +105,11 @@ export default {
     hasEnoughParticipants() {
       return this.playersWithAnyGame.length >= 2;
     },
-    hasPlayersMatchingSearch(){
+    hasPlayersMatchingSearch() {
       return this.hasSearchText && this.playersMatchingGameSearch.length > 0;
     },
     hasSearchText() {
-      return this.searchText !== ""
+      return this.searchText !== "";
     },
     lowerCaseSearch() {
       return this.searchText.toLowerCase();
@@ -123,17 +122,17 @@ export default {
         .map(player => player.name)
         .slice()
         .sort(orderPlayersByNameAsc);
-      return `This year's participants are ${this.stringOfPlayerNames(playerNames)}.`;
+      return `This year's participants are ${this.stringOfPlayerNames(
+        playerNames
+      )}.`;
     },
     playersMatchingGameSearch() {
       const hasFilteredGames = player =>
         filterOwnedGames(this.lowerCaseSearch, player.games).length > 0;
-      return this.playersWithAnyGame
-        .filter(hasFilteredGames)
-        .map(player => ({
-          name: player.name,
-          games: sortGames(filterOwnedGames(this.lowerCaseSearch, player.games))
-        }))
+      return this.playersWithAnyGame.filter(hasFilteredGames).map(player => ({
+        name: player.name,
+        games: sortGames(filterOwnedGames(this.lowerCaseSearch, player.games))
+      }));
     },
     playersNamesMatchingGameSearch() {
       return this.playersMatchingGameSearch.map(player => player.name);
@@ -149,22 +148,22 @@ export default {
         return "See below for the full game list!";
       }
       if (!this.hasPlayersMatchingSearch) {
-        return "Looks like that'd be a new addition";
+        return "Looks like that'd be a new addition.";
       }
-      return '';
-    },
+      return "";
+    }
   },
   methods: {
     stringOfPlayerNames(listOfNames) {
       const numPlayers = listOfNames.length;
       if (numPlayers === 0) {
-        return ''
+        return "";
       } else if (numPlayers === 1) {
-        return listOfNames[0]
+        return listOfNames[0];
       }
-      return `${listOfNames
-        .slice(0, numPlayers - 1)
-        .join(", ")} and ${listOfNames[numPlayers - 1]}`
+      return `${listOfNames.slice(0, numPlayers - 1).join(", ")} and ${
+        listOfNames[numPlayers - 1]
+      }`;
     }
   }
 };
@@ -185,13 +184,15 @@ export default {
   text-decoration-color: green;
 }
 
-.search-label, #search-field {
+.search-label,
+#search-field {
   display: block;
   margin: 1.25em auto;
 }
 
 @media (min-width: 43.75em) {
-  .search-label, #search-field {
+  .search-label,
+  #search-field {
     display: inline;
     margin: 0 auto;
   }

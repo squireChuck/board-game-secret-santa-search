@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import GameListItem from './GameListItem.vue'
+import GameListItem from "./GameListItem.vue";
 export default {
-  name: 'GameList',
+  name: "GameList",
   components: {
     GameListItem
   },
@@ -23,7 +23,7 @@ export default {
       required: true
     }
   }
-}
+};
 </script>
 
 <style scoped>

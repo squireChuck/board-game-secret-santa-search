@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .game-list-item {
-  border: 1px solid rgba(0,0,0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   margin: 1em;
   padding: 0.5em 1.5em;
