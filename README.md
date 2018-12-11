@@ -25,6 +25,7 @@ Important viewport breakpoints:
 - Simple server for compiled assets, quick and easy setup.
   - depending on ease of set up for Vue cli, consider adding a simple server
     that houses the static app in a `dist-`like folder
+  - npm script to copy compiled ui into the `./server/dist` folder
   - npm script to copy `players.json` into the ui and server folders.
 - Link board game names with Board Game Geek entries
 - Stats based on a player's games, e.g. favorite genre/mechanic/etc.
