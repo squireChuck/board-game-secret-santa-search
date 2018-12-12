@@ -1,14 +1,21 @@
 # bgs3-ui
 
-## UI future features
-- [ ] Selectable participant filter.
-  - e.g. `I want to see games owned by: <badges/list of selected people>`,
-    including a mechanism option to add/remove people.
-  - Addresses the case of, `I only want to see games owned by <person X>`.
-- [ ] Test on desktop, mobile; fix any weirdness.
-- [ ] Replace "Avenir" with Roboto/other sans-serif typeface with progressive enhancement if
-  typeface unavailable.
-- [ ] Investigate `vue-mq` to expose media query breakpoints. Can this handle em's (if necessary)?
+To set up the ui for development:
+1. Make sure [Node.js](https://nodejs.org/en/download/) is installed.
+1. Install dependencies in this `ui` folder: `npm install`
+1. Compile and serve on hot-reloading dev server: `npm run serve`
+
+To build for prod or the local Koa server:
+1. Make sure [Node.js](https://nodejs.org/en/download/) is installed.
+1. Install dependencies in this `ui` folder: `npm install`
+1. Compile and minify: `npm run build`
+1. Copy the compiled assets (located in `dist`) into the `server` folder:
+  `cp -r dist ../server/`
+
+Important viewport breakpoints:
+-  Mobile size max-width: < 43.75em - < 700px
+-  @media (min-width: 43.75em) - 700px
+-  @media (min-width: 56.25em) - 900px
 
 ## Project setup
 ```
