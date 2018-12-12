@@ -4,10 +4,6 @@ More specifically, easily search through people's exported
 [Board Game Geek](https://boardgamegeek.com) collections to see if anyone
 has a specific game.
 
-Important viewport breakpoints:
--  Mobile size max-width: < 43.75em - < 700px
--  @media (min-width: 43.75em) - 700px
--  @media (min-width: 56.25em) - 900px
 
 
 ## Instructions
@@ -22,12 +18,27 @@ Important viewport breakpoints:
 
 
 ## Project future features
-- Simple server for compiled assets, quick and easy setup.
-  - depending on ease of set up for Vue cli, consider adding a simple server
-    that houses the static app in a `dist-`like folder
-  - npm script to copy `players.json` into the ui and server folders.
 - Link board game names with Board Game Geek entries
 - Stats based on a player's games, e.g. favorite genre/mechanic/etc.
+
+## UI future features
+- Selectable participant filter.
+  - e.g. `I want to see games owned by: <badges/list of selected people>`,
+    including a mechanism option to add/remove people.
+  - Addresses the case of, `I only want to see games owned by <person X>`.
+- Test on desktop, mobile; fix any weirdness.
+- Replace "Avenir" with Roboto/other sans-serif typeface with progressive enhancement if
+  typeface unavailable.
+- Investigate `vue-mq` to expose media query breakpoints. Can this handle em's (if necessary)?
+
+## Server future features
+-  Make it easy to swap in a custom `players.json` on the server side.
+  - Current process involves recompiling the entire `ui` and copying it into the
+    `server/dist` folder as the data file is
+    [inlined during webpack compilation](https://cli.vuejs.org/guide/html-and-static-assets.html#static-assets-handling).
+  - Along with this, consider:
+    - npm script to copy compiled ui into the `./server/dist` folder
+    - npm script to copy `players.json` into the ui and server folders.
 
 ## Refs
 - Steve Lianardo's [Santa Hat icon](http://www.iconarchive.com/show/free-christmas-flat-icons-by-stevelianardo/santa-hat-icon.html)
