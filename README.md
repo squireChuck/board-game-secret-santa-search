@@ -44,3 +44,6 @@ has a specific game.
 - Steve Lianardo's [Santa Hat icon](http://www.iconarchive.com/show/free-christmas-flat-icons-by-stevelianardo/santa-hat-icon.html)
   - [Iconset: Free Christmas Flat Icons (24 icons)](http://www.iconarchive.com/show/free-christmas-flat-icons-by-stevelianardo.html)
   - License: CC Attribution 4.0
+- https://boardgamegeek.com/wiki/page/Data_Mining#
+- https://mail.google.com/mail/u/0/#search/board+game+secret+santa/FMfcgxmMmWLHDcbwQzKQxzHdSNpHgxvW <= contains links to people's collections
+- https://boardgamegeek.com/geekcollection.php?action=exportcsv&subtype=boardgame&username=Jasimmons3085&all=1 => csv download link
